@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'anakin',
                 'password' => Hash::make('4nak1n'),
-                'email_verified_at' => now()
+                'email_verified_at' => now(),
             ]
         );
 

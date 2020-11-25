@@ -8,5 +8,4 @@ return [
     'comments' => 'Comments',
     'users' => 'Users',
     'media' => 'Gallery',
-    "eigneeringTypes" => "Engineering Types"
 ];

@@ -34,6 +34,13 @@
         </a>
     </li>
 
+    <li class="nav-item" role="presentation" data-toggle="tooltip" data-placement="right" title="@lang('dashboard.engineeringtypes')">
+        <a class="nav-link {{ request()->route()->named('admin.engineeringtypes.*') ? 'active' : '' }}" href="{{ route('admin.engineeringtypes.index') }}">
+            <i class="fas fa-construction" aria-hidden="true"></i>&nbsp;
+            <span class="nav-link-text">@lang('dashboard.eigneeringTypes')</span>
+        </a>
+    </li>
+
 </ul>
 
 <ul class="navbar-nav sidenav-toggler">

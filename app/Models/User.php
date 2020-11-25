@@ -21,7 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'provider', 'provider_id', 'registered_at', 'api_token'
+        'name', 'email', 'password', 'provider', 'provider_id',
+        'registered_at', 'api_token', 'engineer_type_id',
     ];
 
     /**
@@ -140,5 +141,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles(): belongsToMany
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function engineerType()
+    {
+        return $this->belongsTo(EngineerType::class);
     }
 }
