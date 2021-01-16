@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Validator;
+use \App\Models\EngineerType;
 
 class RegisterController extends Controller
 {
@@ -65,5 +66,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'engineer_type_id' => $data['engineer_type'],
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $engineerTypes = EngineerType::all();
+        return view('auth.register', compact('engineerTypes'));
     }
 }

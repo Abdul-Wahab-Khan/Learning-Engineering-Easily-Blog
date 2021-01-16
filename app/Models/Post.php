@@ -28,6 +28,7 @@ class Post extends Model
         'posted_at',
         'slug',
         'thumbnail_id',
+        'post_type'
     ];
 
     /**
@@ -129,6 +130,12 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(EngineerType::class);
+    }
+
+
     /**
      * return the excerpt of the post content
      */
@@ -144,4 +151,5 @@ class Post extends Model
     {
         return filled($this->thumbnail_id);
     }
+
 }

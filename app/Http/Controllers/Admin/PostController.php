@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostsRequest;
+use App\Models\EngineerType;
 use App\Models\MediaLibrary;
 use App\Models\Post;
 use App\Models\User;
@@ -42,7 +43,8 @@ class PostController extends Controller
     {
         return view('admin.posts.create', [
             'users' => User::authors()->pluck('name', 'id'),
-            'media' => MediaLibrary::first()->media()->get()->pluck('name', 'id')
+            'media' => MediaLibrary::first()->media()->get()->pluck('name', 'id'),
+            'types' => EngineerType::all()
         ]);
     }
 
@@ -51,7 +53,8 @@ class PostController extends Controller
      */
     public function store(PostsRequest $request): RedirectResponse
     {
-        $post = Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
+        $request->posted_at = date('Y-m-d');
+        $post = Post::create($request->only(['title', 'post_type', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
     }

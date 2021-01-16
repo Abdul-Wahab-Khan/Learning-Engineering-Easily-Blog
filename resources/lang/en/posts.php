@@ -17,6 +17,7 @@ return [
   'show' => "Show post",
   'search' => "Search ...",
   'search_results' => ":count post found|:count posts found",
+  'post_type' => 'Post Type',
 
   'attributes' => [
     'title' => 'Title',

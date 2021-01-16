@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Comment;
+use App\Models\EngineerType;
 use App\Models\MediaLibrary;
 use App\Models\Post;
 use App\Models\Role;
@@ -23,6 +24,10 @@ class DatabaseSeeder extends Seeder
         // MediaLibrary
         MediaLibrary::firstOrCreate([]);
 
+        EngineerType::firstOrCreate([
+            'name' => 'Mechanical'
+        ]);
+
         // Users
         $user = User::firstOrCreate(
             ['email' => 'darthvader@deathstar.ds'],
@@ -30,6 +35,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'anakin',
                 'password' => Hash::make('4nak1n'),
                 'email_verified_at' => now(),
+                'engineer_type_id' => 1
             ]
         );
 
@@ -47,7 +53,8 @@ class DatabaseSeeder extends Seeder
                     Welcome to Laravel-blog !<br><br>
                     Don't forget to read the README before starting.<br><br>
                     Feel free to add a star on Laravel-blog on Github !<br><br>
-                    You can open an issue or (better) a PR if something went wrong."
+                    You can open an issue or (better) a PR if something went wrong.",
+                'post_type' => 1
             ]
         );
 

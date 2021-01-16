@@ -25,14 +25,12 @@
             </div>
 
             <div class="form-group{{ $errors->has('engineer_type') ? ' has-error' : '' }}">
-                <label for="engineer_type" class="col-md-4 control-label">Engineering Type</label>
+                <label for="engineer_type" class="control-label">Engineering Type</label>
 
-                <div class="col-md-6">
                     <select id="engineer_type" type="engineer_type" class="form-control" name="engineer_type" value="{{ old('engineer_type') }}" required>
-                        <option value="1">Simple User</option>
-                        <option value="2">Mechanical</option>
-                        <option value="3">Civil</option>
-                        <option value="4">Water</option>
+                        @foreach ($engineerTypes as $engineerType)
+                        <option value="{{$engineerType->id}}">{{$engineerType->name}}</option>
+                        @endforeach
                     </select>
 
                     @if ($errors->has('engineer_type'))
@@ -40,7 +38,6 @@
                             <strong>{{ $errors->first('engineer_type') }}</strong>
                         </span>
                     @endif
-                </div>
             </div>
 
             <div class="form-group">

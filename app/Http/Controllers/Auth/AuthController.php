@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\EngineerType;
 use App\Models\User;
 use Auth;
 use Socialite;
@@ -60,4 +61,6 @@ class AuthController extends Controller
                         'provider_id' => $user->id
                     ]);
     }
+
+
 }
