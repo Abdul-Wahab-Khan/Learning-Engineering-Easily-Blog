@@ -147,4 +147,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(EngineerType::class);
     }
+
+    public function userMessages()
+    {
+        return $this->hasMany(UserMessage::class);
+    }
 }

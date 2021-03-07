@@ -35,6 +35,7 @@
             <div class="form-group">
                 {!! Form::submit(__('auth.login'), ['class' => 'btn btn-primary']) !!}
                 {{ link_to('/password/reset', __('auth.forgotten_password'), ['class' => 'btn btn-link'])}}
+                {{ link_to('/register', __('auth.register').' now', ['class' => 'btn btn-link'])}}
             </div>
         {!! Form::close() !!}
 

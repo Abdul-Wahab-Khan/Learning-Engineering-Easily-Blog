@@ -44,7 +44,6 @@ class PostController extends Controller
         return view('admin.posts.create', [
             'users' => User::authors()->pluck('name', 'id'),
             'media' => MediaLibrary::first()->media()->get()->pluck('name', 'id'),
-            'types' => EngineerType::all()
         ]);
     }
 
@@ -53,10 +52,20 @@ class PostController extends Controller
      */
     public function store(PostsRequest $request): RedirectResponse
     {
-        $request->posted_at = date('Y-m-d');
-        $post = Post::create($request->only(['title', 'post_type', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
-        return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
+        $post = new Post;
+
+        $post->posted_at = date('Y-m-d');
+        $post->title = $request->title;
+        $post->post_type = $request->post_type;
+        $post->content = $request->content;
+        $post->posted_at = $request->posted_at;
+        $post->author_id = $request->author_id;
+        $post->thumbnail_id = $request->thumbnail_id;
+
+        $post->save();
+
+        return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'))->with('types', EngineerType::all());
     }
 
     /**

@@ -1,66 +1,108 @@
 @extends('layouts/app')
 
-<header class="masthead" style="background-image: url('{{asset("img/about-bg.jpg")}}')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>LEE</h1>
-            <span class="subheading">Learn Engineering Easily</span>
-          </div>
-        </div>
-      </div>
+
+  <section id="hero" style='background-image: url("storage/mainImage/afiiOspXeso7JPjffyyo7FIRG48dwDfebQPdetAy.jpeg")' class="d-flex align-items-center">
+    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+      <h1>LEE </h1>
+      <h2>The web site for those who wants to <strong color="red">L</strong>earn <strong>E</strong>ngineering <strong>E</strong>asily</h2>
+      @if(!Auth::user())
+        <a href="/login" class="btn-get-started scrollto">Log In</a>
+      @endif
     </div>
-  </header>
+  </section><!-- End Hero -->
 
 @section("content")
 
+<main id="main">
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
+  <section id="why-us" class="why-us">
+    <div class="container">
 
-        @foreach ($posts as $post)
-            <div class="post-preview row">
-                <div class="col-md-2">
-                    @if ($post->hasThumbnail())
-                        <a href="{{ route('posts.show', $post)}}">
-                        {{ Html::image($post->thumbnail->getUrl('thumb'), $post->thumbnail->name, ['class' => 'card-img-top']) }}
-                        </a>
-                    @endif
-                </div>
-                <div class="col-md-*">
-                    <a href="{{ route('posts.show', $post)}}" style="text-decoration: none">
-                        <h2 class="post-title">
-                            {{$post->title}}
-                        </h2>
-                        <h5 class="post-subtitle">
-                           {!! substr($post->content, 0, 100) !!} ...
-                        </h5>
-                        </a>
-                        <p class="post-meta">Posted by
-                        <a href="#">{{$post->author->name}}</a>
-                        on {{$post->posted_at}}</p>
-                </div>
+        <div class="row">
+
+          <!-- Blog Entries Column -->
+          <div class="col-md-8">
+
+            <h1 class="my-4">Engineering
+              <small>Posts</small>
+            </h1>
+
+            @foreach ($posts as $post)
+            <!-- Blog Post -->
+            <div class="card mb-4">
+              <img class="card-img-top" src="{{$post->thumbnail->getUrl()}}" alt="Post image">
+              <div class="card-body">
+                <h2 class="card-title">{{$post->title}}</h2>
+                <p class="card-text">{{substr(strip_tags($post->content), 0, 100)}} ...</p>
+                <a href="{{ route('posts.show', $post)}}" class="btn btn-primary">Read More &rarr;</a>
+              </div>
+              <div class="card-footer text-muted">
+                {{$post->posted_at->diffForHumans()}}
+              </div>
             </div>
-            <hr>
-        @endforeach
+            @endforeach
 
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          </div>
+
+          <!-- Sidebar Widgets Column -->
+          <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">Search</h5>
+              <div class="card-body">
+                <form action="/searchPosts" method="POST">
+                    @csrf
+                    <div class="input-group">
+                    <input type="text" class="form-control" name="searchText" placeholder="Search for...">
+                    <span class="input-group-append">
+                        <input type="submit" value="Search" class="btn btn-dark">
+                    </span>
+                    </div>
+                </form>
+
+              </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">Categories</h5>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      @foreach($categories as $category)
+                        <li>
+                            <a href="/category/{{$category->id}}">{{$category->name}}</a>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3>Other Posts</h3>
+            @foreach($other_posts as $post)
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">{{$post->title}}</h5>
+              <div class="card-body">
+                <a href="{{ route('posts.show', $post)}}" class="card-text">
+                    <img class="card-img" src="{{$post->thumbnail->getUrl()}}" alt="Post image">
+                    {{substr(strip_tags($post->content), 0, 100)}} ...
+                </a>
+              </div>
+            </div>
+            @endforeach
+          </div>
+
         </div>
+        <!-- /.row -->
+
       </div>
-    </div>
-  </div>
 
-  <hr>
-  @endsection
+  </section><!-- End Why Us Section -->
+
+</main>
+
   <!-- Footer -->
-
-
-  {{-- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> --}}

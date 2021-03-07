@@ -41,6 +41,20 @@
         </a>
     </li>
 
+    <li class="nav-item" role="presentation" data-toggle="tooltip" data-placement="right" title="@lang('dashboard.userMessages')">
+        <a class="nav-link {{ request()->route()->named('admin.userMessages.*') ? 'active' : '' }}" href="{{ route('admin.userMessages.index') }}">
+            <i class="fas fa-construction" aria-hidden="true"></i>&nbsp;
+            <span class="nav-link-text">@lang('dashboard.userMessages')</span>
+        </a>
+    </li>
+
+    <li class="nav-item" role="presentation" data-toggle="tooltip" data-placement="right" title="@lang('dashboard.mainImage')">
+        <a class="nav-link {{ request()->route()->named('admin.mainImage.*') ? 'active' : '' }}" href="{{ route('admin.mainImage.index') }}">
+            <i class="fas fa-construction" aria-hidden="true"></i>&nbsp;
+            <span class="nav-link-text">@lang('dashboard.mainImage')</span>
+        </a>
+    </li>
+
 </ul>
 
 <ul class="navbar-nav sidenav-toggler">

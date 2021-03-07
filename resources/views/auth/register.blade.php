@@ -60,6 +60,7 @@
 
             <div class="form-group">
                 {!! Form::submit(__('auth.register'), ['class' => 'btn btn-primary']) !!}
+                {{ link_to('/login', __('auth.login'), ['class' => 'btn btn-link'])}}
             </div>
 
         {!! Form::close() !!}

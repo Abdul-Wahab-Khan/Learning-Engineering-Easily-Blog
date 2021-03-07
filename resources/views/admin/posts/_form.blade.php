@@ -33,7 +33,7 @@
     <div class="form-group col-md-*">
         <label for="post_type">{{__('posts.post_type')}}</label>
         <select name="post_type" id="post_type" aria-placeholder="{{__('posts.post_type')}}" class="form-control {{($errors->has('thumbnail_id') ? ' is-invalid' : '')}}">
-            @foreach ($types as $type)
+            @foreach ($categories as $type)
                 <option value="{{$type->id}}">
                     {{$type->name}}
                 </option>

@@ -15,7 +15,7 @@ new Vue({
     CommentForm,
     CommentList,
     Like,
-    Remove
+    Remove,
   },
 
   mounted () {

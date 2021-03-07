@@ -9,3 +9,5 @@ Route::resource('users', 'UserController')->only(['index', 'edit', 'update']);
 Route::resource('comments', 'CommentController')->only(['index', 'edit', 'update', 'destroy']);
 Route::resource('media', 'MediaLibraryController')->only(['index', 'show', 'create', 'store', 'destroy']);
 Route::resource('engineeringtypes', 'EngineerTypeController');
+Route::resource('userMessages', 'UserMessageController');
+Route::resource('mainImage', 'MainImageController');

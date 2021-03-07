@@ -8,5 +8,7 @@ return [
     'comments' => 'Comments',
     'users' => 'Users',
     'media' => 'Gallery',
-    "eigneeringTypes" => "Engineering Types"
+    "eigneeringTypes" => "Engineering Types",
+    'userMessages' => 'User Messages',
+    'mainImage' => 'Main Image',
 ];

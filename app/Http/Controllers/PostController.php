@@ -31,7 +31,8 @@ class PostController extends Controller
         $post->likes_count = $post->likes()->count();
 
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'other_posts' => Post::inRandomOrder(4)->get(),
         ]);
     }
 }

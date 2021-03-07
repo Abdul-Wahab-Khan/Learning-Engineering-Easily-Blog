@@ -12,6 +12,7 @@ Route::prefix('auth')->group(function () {
     Route::get('{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 });
 
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('settings')->group(function () {
         Route::get('account', 'UserController@edit')->name('users.edit');
@@ -25,4 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::resource('newsletter-subscriptions', 'NewsletterSubscriptionController')->only('store');
+
+    Route::get('/contact', 'Auth\ContactController@contact')->name('contact');
+    Route::post('/contact', 'Auth\ContactController@store')->name('postContact');
 });
