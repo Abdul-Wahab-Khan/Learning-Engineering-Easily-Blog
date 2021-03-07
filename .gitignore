@@ -9,6 +9,7 @@ public/media/
 /vendor
 /.idea
 /.vagrant
+.env
 .php_cs.cache
 /storage/debugbar
 /storage/tmp
