@@ -1,4 +1,6 @@
-# Laravel 8.0 blog
+
+
+<!-- # Laravel 8.0 blog
 
 [![Build Status](https://travis-ci.org/guillaumebriday/laravel-blog.svg?branch=master)](https://travis-ci.org/guillaumebriday/laravel-blog)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/guillaumebriday)
@@ -163,4 +165,4 @@ Do not hesitate to contribute to the project by adapting or adding features ! Bu
 
 ## License
 
-This project is released under the [MIT](http://opensource.org/licenses/MIT) license.
+This project is released under the [MIT](http://opensource.org/licenses/MIT) license. -->
